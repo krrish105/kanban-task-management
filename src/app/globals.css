@@ -3,25 +3,207 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+
+	--main-purple: #635fc7;
+	--main-purple-secondary: #635fc71a;
+	--main-purple-secondary-hover: #635fc71a;
+	--main-purple-hover: #a8a4ff;
+
+	--red: #ea5555;
+	--red-hover: #ff9898;
+	--dark-grey: #2b2c37;
+	--medium-grey: #828fa3;
+
+	--background: #f4f7fd;
+	--lines: #e4ebfa;
+	--text: #000112;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--background: #20212c;
+		--lines-dark: #3e3f4e;
+		--text: #fff;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	background: var(--background);
+	font-family: Plus Jakarta Sans;
+}
+
+/* ====== Typography ====== */
+.heading_xl {
+	color: var(--text);
+
+	/* Heading (XL) */
+	font-size: 24px;
+	font-weight: 700;
+	line-height: normal;
+}
+.heading_l {
+	color: var(--text);
+
+	/* Heading (L) */
+	font-size: 18px;
+	font-weight: 700;
+	line-height: normal;
+}
+.heading_m {
+	color: var(--text);
+
+	/* Heading (M) */
+	font-size: 15px;
+	font-weight: 700;
+	line-height: normal;
+}
+.heading_s {
+	color: var(--medium-grey);
+
+	/* Heading (S) */
+	font-size: 12px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 2.4px;
+}
+.text_medium {
+	color: var(--dark-grey);
+
+	/* Body (L) */
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 23px; /* 176.923% */
+}
+.text_bold {
+	color: var(--dark-grey);
+
+	/* Body (M) */
+	font-size: 12px;
+	font-weight: 700;
+	line-height: normal;
+}
+
+/* ====== Interactive Elements ====== */
+.button_primary_l {
+	border-radius: 24px;
+	background: var(--main-purple);
+	color: #fff;
+	padding: 16px 32px;
+	text-align: center;
+
+	/* Heading (M) */
+	font-size: 15px;
+	font-weight: 700;
+	line-height: normal;
+}
+.button_primary_s {
+	border-radius: 24px;
+	background: var(--main-purple);
+	color: #fff;
+	padding: 8px 24px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 23px; /* 176.923% */
+}
+.button_primary_s:hover,
+.button_primary_l:hover {
+	background-color: var(--main-purple-hover);
+}
+
+.button_secondary {
+	border-radius: 20px;
+	background: var(--main-purple-secondary);
+	padding: 8px 24px;
+
+	color: var(--main-purple);
+	text-align: center;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 23px; /* 176.923% */
+}
+.button_secondary:hover {
+	background: var(--main-purple-secondary-hover);
+}
+.button_desctructive {
+	border-radius: 20px;
+	background: var(--red);
+	color: #fff;
+	text-align: center;
+	padding: 8px 24px;
+
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 23px; /* 176.923% */
+}
+.button_desctructive:hover {
+	background-color: var(--red-hover);
+}
+
+.form_group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.form_group label {
+	color: var(--medium-grey);
+
+	font-size: 12px;
+	font-weight: 700;
+	line-height: normal;
+}
+.form_group input {
+	background-color: transparent;
+	border-radius: 4px;
+	border: 1px solid #828fa340;
+	padding: 8px 16px;
+}
+.form_group input::placeholder {
+	color: var(--text);
+
+	/* Body (L) */
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 23px; /* 176.923% */
+	opacity: 0.25;
+}
+.form_group input:active {
+	border: 1px solid #828fa340;
+	color: var(--text);
+}
+.form_group.has_error input {
+	border: 1px solid var(--red);
+}
+.form_group select {
+	background-color: transparent;
+	border-radius: 4px;
+	border: 1px solid #828fa340;
+	padding: 8px 16px;
+
+	color: var(--text);
+
+	/* Body (L) */
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 23px; /* 176.923% */
+}
+
+.board_name.active {
+	background-color: var(--main-purple);
+}
+.create_new {
+	color: var(--main-purple);
+}
+.toggle_theme {
+	background-color: var(--background);
+	padding: 8px 12px;
+	width: 100%;
+}
+
+.left_menu,
+.top_nav {
+	background-color: var(--dark-grey);
 }

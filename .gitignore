@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/kanban-task-management-web-app
+/kanban-task-management-web-app-figma
