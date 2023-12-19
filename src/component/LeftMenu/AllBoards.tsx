@@ -1,10 +1,10 @@
 "use client";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import BoardName from "@/app/component/LeftMenu/BoardName";
+import BoardName from "@/component/LeftMenu/BoardName";
 import Image from "next/image";
 
-const AllBoards = () => {
+const AllBoards = ({ activeLink }: { activeLink: string }) => {
 	const InitialState = useSelector((state: RootState) => state.boardSlice);
 
 	return (
@@ -14,7 +14,10 @@ const AllBoards = () => {
 				{InitialState.boards.length > 0 &&
 					InitialState.boards.map((el, i) => {
 						return (
-							<div key={el.name}>
+							<div
+								key={el.name}
+								className={`board_name ${el.name === activeLink && "active"}`}
+							>
 								<BoardName name={el.name} />
 							</div>
 						);

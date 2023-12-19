@@ -6,7 +6,7 @@ import {
 	TaskState,
 	SubTaskState,
 } from "@/redux/Types";
-import mainData from "../../../data.json";
+import mainData from "../../../public/data.json";
 
 const initialState: MainState = {
 	boards: mainData.boards,

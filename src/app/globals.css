@@ -35,6 +35,10 @@ body {
 	font-family: Plus Jakarta Sans;
 }
 
+main {
+	height: 100vh;
+}
+
 /* ====== Typography ====== */
 .heading_xl {
 	color: var(--text);
@@ -191,9 +195,17 @@ body {
 	line-height: 23px; /* 176.923% */
 }
 
-.board_name.active {
+.board_name a {
+	border-radius: 0px 100px 100px 0px;
+}
+.board_name.active a {
 	background-color: var(--main-purple);
 }
+.board_name:hover a {
+	background: #fff;
+	color: var(--main-purple);
+}
+
 .create_new {
 	color: var(--main-purple);
 }
@@ -206,4 +218,39 @@ body {
 .left_menu,
 .top_nav {
 	background-color: var(--dark-grey);
+}
+
+.backdrop {
+	opacity: 0.5;
+	background: #000;
+}
+
+.main_content {
+	height: calc(100vh - 80px);
+	overflow: auto;
+}
+.task_col {
+	border-radius: 8px;
+	background: var(--Dark-Grey, #2b2c37);
+	box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.1);
+	padding: 24px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 280px;
+}
+.task_col .text_medium {
+	color: var(--medium-grey);
+}
+
+.column_dot {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-color: #49c4e5;
+	border-radius: 50%;
+}
+.columns_grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 280px);
 }
