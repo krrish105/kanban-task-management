@@ -2,7 +2,11 @@ import AllBoards from "@/component/LeftMenu/AllBoards";
 import Logo from "@/component/common/Logo";
 import Image from "next/image";
 
-const LeftMenu = ({ activeLink }: { activeLink: string }) => {
+const LeftMenu = ({
+	activeLink,
+}: {
+	activeLink: string | undefined | null;
+}) => {
 	return (
 		<aside className='left_menu flex flex-col justify-between gap-8 pt-7 pb-10 w-full h-screen pr-12'>
 			<div className='flex gap-12 flex-col'>

@@ -4,7 +4,11 @@ import { RootState } from "@/redux/store";
 import BoardName from "@/component/LeftMenu/BoardName";
 import Image from "next/image";
 
-const AllBoards = ({ activeLink }: { activeLink: string }) => {
+const AllBoards = ({
+	activeLink,
+}: {
+	activeLink: string | undefined | null;
+}) => {
 	const InitialState = useSelector((state: RootState) => state.boardSlice);
 
 	return (
