@@ -3,6 +3,8 @@ import getBoard from "@/lib/getBoard";
 import LeftMenu from "@/component/LeftMenu/LeftMenu";
 import Header from "@/component/common/Header";
 import { ColumnState, SubTaskState, TaskState } from "@/redux/Types";
+import Task from "@/component/popups/task/Task";
+import TaskContainer from "@/component/common/TaskContainer";
 
 async function getData(slug: string) {
 	const res = getBoard(slug);
@@ -30,10 +32,10 @@ const Board = async ({ params }: { params: { slug: string } }) => {
 	const data = await getData(params.slug);
 
 	return (
-		<main className='grid grid-cols-[300px_auto]'>
+		<main>
 			<LeftMenu activeLink={data[0].name} />
 			<div>
-				<Header name={data[0].name} />
+				<Header board={data[0]} />
 				<div className='main_content'>
 					{data[0].columns.length > 0 ? (
 						<div className='columns_grid gap-6 p-6'>
@@ -46,18 +48,7 @@ const Board = async ({ params }: { params: { slug: string } }) => {
 										</h3>
 										<div className='flex flex-col gap-5'>
 											{column.tasks.map((task: TaskState, i) => {
-												let completedSubtasks = task.subtasks.filter(
-													(el: SubTaskState, i: number) => el.isCompleted
-												);
-												return (
-													<div className='task_col' key={task.title}>
-														<span className='heading_m'>{task.title}</span>
-														<span className='text_medium'>
-															{completedSubtasks.length} of{" "}
-															{task.subtasks.length} subtasks
-														</span>
-													</div>
-												);
+												return <TaskContainer task={task} key={task.title} />;
 											})}
 										</div>
 									</div>

@@ -1,21 +1,13 @@
-import Image from "next/image";
+import Actions from "@/component/common/Actions";
+import { BoardState } from "@/redux/Types";
 
-const Header = ({ name }: { name: string }) => {
+const Header = ({ board }: { board: BoardState }) => {
 	return (
 		<div className='top_nav px-6 py-5 flex justify-between items-center gap-6 h-fit w-full'>
 			{/* Top Section */}
-			<h1 className='heading_xl'>{name}</h1>
-			<div className='flex gap-7'>
-				<button className='button_primary_s'>+ Add New Task</button>
-				<button>
-					<Image
-						src='/assets/icon-vertical-ellipsis.svg'
-						alt=''
-						width={5}
-						height={20}
-					/>
-					<span className='sr-only'>Open Actions</span>
-				</button>
+			<h1 className='heading_xl'>{board.name}</h1>
+			<div className='flex gap-7 items-center'>
+				<Actions board={board} />
 			</div>
 		</div>
 	);

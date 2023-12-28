@@ -19,4 +19,5 @@ export type BoardState = {
 
 export type MainState = {
 	boards: BoardState[];
+	error: string;
 };

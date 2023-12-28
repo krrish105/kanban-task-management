@@ -10,14 +10,36 @@ import mainData from "../../../public/data.json";
 
 const initialState: MainState = {
 	boards: mainData.boards,
+	error: "",
 };
 
 export const cart = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		createNewBoard: (state, action) => {},
-		createNewColumn: (state, action) => {},
+		createNewBoard: (state, action) => {
+			let isBoardAlreadyThere = state.boards.filter(
+				(board) =>
+					action.payload.name.toLowerCase() === board.name.toLowerCase()
+			);
+			if (isBoardAlreadyThere.length > 0) {
+				state.boards.push({
+					name: action.payload.name,
+					columns: action.payload.columns,
+				});
+			} else {
+				state.error = "Board already present!";
+			}
+		},
+		createNewColumn: (state, action) => {
+			state.boards.map((board) => {
+				if (
+					action.payload.boardName.toLowerCase() === board.name.toLowerCase()
+				) {
+					board.columns = action.payload.columns;
+				}
+			});
+		},
 		createNewTask: (state, action) => {},
 		createNewSubTask: (state, action) => {},
 
